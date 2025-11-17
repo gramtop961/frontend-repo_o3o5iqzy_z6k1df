@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Magnetic from './Magnetic'
 
 export default function Hero() {
   return (
@@ -26,13 +27,17 @@ export default function Hero() {
             <p className="text-lg text-slate-600 max-w-xl">
               WebsiteKompas helpt kleinere bedrijven met moderne websites, apps en automatisering, zodat ze groeien zonder zorgen.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="#services" className="inline-flex items-center rounded-md bg-[#00C9B1] text-[#1D2B3A] px-5 py-3 font-semibold shadow-sm hover:brightness-110 active:scale-[0.98] transition-transform">
-                Bekijk onze diensten
-              </a>
-              <a href="#contact" className="inline-flex items-center rounded-md border border-[#1D2B3A]/20 text-[#1D2B3A] px-5 py-3 font-semibold hover:bg-[#1D2B3A]/5 active:scale-[0.98] transition-transform">
-                Vraag een offerte aan
-              </a>
+            <div className="flex flex-wrap gap-3 group">
+              <Magnetic>
+                <a href="#services" className="inline-flex items-center rounded-md bg-[#00C9B1] text-[#1D2B3A] px-5 py-3 font-semibold shadow-sm hover:brightness-110 active:scale-[0.98] transition-transform">
+                  Bekijk onze diensten
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a href="#contact" className="inline-flex items-center rounded-md border border-[#1D2B3A]/20 text-[#1D2B3A] px-5 py-3 font-semibold hover:bg-[#1D2B3A]/5 active:scale-[0.98] transition-transform">
+                  Vraag een offerte aan
+                </a>
+              </Magnetic>
             </div>
           </motion.div>
 
@@ -42,18 +47,22 @@ export default function Hero() {
             transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
             className="relative"
           >
-            {/* Abstract card stack */}
-            <div className="relative mx-auto w-full max-w-md">
+            {/* Abstract card stack with parallax tilt */}
+            <div className="relative mx-auto w-full max-w-md [perspective:1200px]">
               <div className="absolute -inset-8 bg-gradient-to-tr from-[#1D2B3A]/10 to-[#00C9B1]/10 rounded-3xl blur-2xl"></div>
-              <div className="relative rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-6 shadow-xl">
+              <motion.div
+                whileHover={{ rotateX: -2, rotateY: 3, translateZ: 12 }}
+                transition={{ type: 'spring', stiffness: 120, damping: 12 }}
+                className="relative rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-6 shadow-xl [transform-style:preserve-3d]"
+              >
                 <div className="grid grid-cols-3 gap-3">
                   {[...Array(9)].map((_, i) => (
-                    <div key={i} className="aspect-square rounded-lg bg-slate-50 border border-slate-200" />
+                    <div key={i} className="aspect-square rounded-lg bg-slate-50 border border-slate-200 will-change-transform" />
                   ))}
                 </div>
                 <div className="mt-4 h-3 w-1/2 rounded bg-slate-100" />
                 <div className="mt-2 h-3 w-2/3 rounded bg-slate-100" />
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
