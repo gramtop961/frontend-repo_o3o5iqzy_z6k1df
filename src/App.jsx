@@ -1,26 +1,26 @@
-import { useState } from 'react'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import Services from './components/Services'
+import USPs from './components/USPs'
+import Portfolio from './components/Portfolio'
+import Testimonials from './components/Testimonials'
+import CTA from './components/CTA'
+import Footer from './components/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#F7F9FA] text-slate-800">
+      <a href="#services" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] bg-white text-[#1D2B3A] px-4 py-2 rounded shadow">Skip to content</a>
+      <Header />
+      <main>
+        <Hero />
+        <Services />
+        <USPs />
+        <Portfolio />
+        <Testimonials />
+        <CTA />
+      </main>
+      <Footer />
     </div>
   )
 }
